@@ -656,8 +656,8 @@ EOF
 # Ensure guacd is started
 echo -e "${BLUE}Starting guacd service & enable at boot...${NC}"
 # service guacd stop 2>/dev/null
-guacd stop
-guacd start
+# guacd stop
+# guacd start
 # systemctl enable guacd
 echo
 
