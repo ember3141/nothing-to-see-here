@@ -512,9 +512,9 @@ fi
 
 # Restart Tomcat
 echo -e "${BLUE}Restarting Tomcat service & enable at boot...${NC}"
-sudo mkdir /usr/share/tomcat9/logs
+# sudo mkdir /usr/share/tomcat9/logs
 # sudo /usr/share/tomcat9/bin/catalina.sh stop
-# sudo /usr/share/tomcat9/bin/catalina.sh start
+sudo /usr/share/tomcat9/bin/catalina.sh start
 if [ $? -ne 0 ]; then
     echo -e "${RED}Failed${NC}" 1>&2
     exit 1
@@ -657,7 +657,7 @@ EOF
 echo -e "${BLUE}Starting guacd service & enable at boot...${NC}"
 # service guacd stop 2>/dev/null
 # guacd stop
-# guacd start
+guacd start
 # systemctl enable guacd
 echo
 
