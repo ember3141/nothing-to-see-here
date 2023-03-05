@@ -533,6 +533,7 @@ if [ "${installMySQL}" = true ]; then
     # Restart MySQL service
     echo -e "${BLUE}Restarting MySQL service & enable at boot...${NC}"
     # service mysql restart
+    sudo service mysql start
     if [ $? -ne 0 ]; then
         echo -e "${RED}Failed${NC}" 1>&2
         exit 1
