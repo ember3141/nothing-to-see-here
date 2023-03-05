@@ -1,5 +1,6 @@
 #!/bin/bash
-# Something isn't working? # tail -f /var/log/messages /var/log/syslog /var/log/tomcat*/*.out /var/log/mysql/*.log
+# Something isn't working? #
+ tail -f /var/log/messages /var/log/syslog /var/log/tomcat*/*.out /var/log/mysql/*.log
 
 # Check if user is root or sudo
 if ! [ $( id -u ) = 0 ]; then
@@ -512,7 +513,7 @@ fi
 
 # Restart Tomcat
 echo -e "${BLUE}Restarting Tomcat service & enable at boot...${NC}"
-# sudo mkdir /usr/share/tomcat9/logs
+sudo mkdir /usr/share/tomcat9/logs
 # sudo /usr/share/tomcat9/bin/catalina.sh stop
 sudo /usr/share/tomcat9/bin/catalina.sh start
 if [ $? -ne 0 ]; then
