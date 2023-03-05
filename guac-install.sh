@@ -540,7 +540,7 @@ if [ "${installMySQL}" = true ]; then
         echo -e "${GREEN}OK${NC}"
     fi
     # Start at boot
-    systemctl enable mysql
+    # systemctl enable mysql
     echo
 
     # Default locations of MySQL config file
@@ -656,7 +656,7 @@ EOF
 echo -e "${BLUE}Starting guacd service & enable at boot...${NC}"
 service guacd stop 2>/dev/null
 service guacd start
-systemctl enable guacd
+# systemctl enable guacd
 echo
 
 # Deal with ufw and/or iptables
@@ -676,15 +676,15 @@ fi
 # It's possible that someone is just running pure iptables...
 
 # Check if iptables is a valid running service
-systemctl is-active --quiet iptables
-if [ $? -eq 0 ]; then
-    # Check if 8080 is not already allowed
-    # FYI: This same command matches the rule added with ufw (-A ufw-user-input -p tcp -m tcp --dport 22 -j ACCEPT)
-    if [[ $(iptables --list-rules | grep -- "-p tcp" | grep -- "--dport 8080" | grep -- "-j ACCEPT" | wc -l) -eq 0 ]]; then
-        # ALlow it
-        iptables -A INPUT -p tcp --dport 8080 --jump ACCEPT
-    fi
-fi
+# systemctl is-active --quiet iptables
+# if [ $? -eq 0 ]; then
+#     # Check if 8080 is not already allowed
+#     # FYI: This same command matches the rule added with ufw (-A ufw-user-input -p tcp -m tcp --dport 22 -j ACCEPT)
+#     if [[ $(iptables --list-rules | grep -- "-p tcp" | grep -- "--dport 8080" | grep -- "-j ACCEPT" | wc -l) -eq 0 ]]; then
+#         # ALlow it
+#         iptables -A INPUT -p tcp --dport 8080 --jump ACCEPT
+#     fi
+# fi
 
 # I think there is another service called firewalld that some people could be running instead
 # Unless someone opens an issue about it or submits a pull request, I'm going to ignore it for now
