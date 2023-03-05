@@ -512,9 +512,9 @@ fi
 
 # Restart Tomcat
 echo -e "${BLUE}Restarting Tomcat service & enable at boot...${NC}"
-sudo mkdir /usr/share/tomcat9/logs
-sudo /usr/share/tomcat9/bin/catalina.sh stop
-sudo /usr/share/tomcat9/bin/catalina.sh start
+# sudo mkdir /usr/share/tomcat9/logs
+# sudo /usr/share/tomcat9/bin/catalina.sh stop
+# sudo /usr/share/tomcat9/bin/catalina.sh start
 if [ $? -ne 0 ]; then
     echo -e "${RED}Failed${NC}" 1>&2
     exit 1
@@ -532,7 +532,7 @@ if [ "${installMySQL}" = true ]; then
 
     # Restart MySQL service
     echo -e "${BLUE}Restarting MySQL service & enable at boot...${NC}"
-    service mysql restart
+    # service mysql restart
     if [ $? -ne 0 ]; then
         echo -e "${RED}Failed${NC}" 1>&2
         exit 1
@@ -576,7 +576,7 @@ if [ "${installMySQL}" = true ]; then
             mysql_tzinfo_to_sql /usr/share/zoneinfo 2>/dev/null | mysql -u root -D mysql -h ${mysqlHost} -P ${mysqlPort}
             crudini --set ${mysqlconfig} mysqld default_time_zone "${timezone}"
             # Restart to apply
-            service mysql restart
+            # service mysql restart
             echo
         fi
     fi
@@ -654,8 +654,8 @@ EOF
 
 # Ensure guacd is started
 echo -e "${BLUE}Starting guacd service & enable at boot...${NC}"
-service guacd stop 2>/dev/null
-service guacd start
+# service guacd stop 2>/dev/null
+# service guacd start
 # systemctl enable guacd
 echo
 
